@@ -123,4 +123,15 @@ const deleteLocalTodos = (todo) => {
     console.log(todoIndex);
 }
 
+const editLocalTodos = (todo) => {
+    let todos = JSON.parse(localStorage.getItem("todos"));
+    let todoIndex = todos.indexOf(todo);
+    todos[todoIndex] = inputBox.value;
+    localStorage.setItem("todos", JSON.stringify(todos));
+}
+
+document.addEventListener('DOMContentLoaded', getLocalTodos);
+addBtn.addEventListener('click', addTodo);
+todoList.addEventListener('click', updateTodo);
+
 
