@@ -59,4 +59,32 @@ const updateTodo = (e) => {
         editTodo = e;
     }
 }
+// Function to save local todo
+const saveLocalTodos = (todo) => {
+    let todos;
+    if (localStorage.getItem("todos") === null) {
+        todos = [];
+    }
+    else {
+        todos = JSON.parse(localStorage.getItem("todos"));
+    }
+    todos.push(todo);
+    localStorage.setItem("todos", JSON.stringify(todos));
+}
+
+// Function to get local todo
+const getLocalTodos = () => {
+    let todos;
+    if (localStorage.getItem("todos") === null) {
+        todos = [];
+    }
+    else {
+        todos = JSON.parse(localStorage.getItem("todos"));
+        todos.forEach(todo => {
+
+            //Creating p tag
+            const li = document.createElement("li");
+            const p = document.createElement("p");
+            p.innerHTML = todo;
+            li.appendChild(p);
 
